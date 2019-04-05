@@ -18,14 +18,16 @@ class CartaCapitalSpider(scrapy.Spider):
         self.start_urls = list(data.values())
 
     def parse(self, response):
-        #
-        # inclua seu código aqui
-        #
+        route = 'div.eltdf-container-inner a::attr(href)'
+        for i in response.css(route):
+            yield response.follow(i,self.postCss,meta= {'url': responde.url})
+
         page = response.url.split("/")[-2]
         filename = 'quotes-%s.html' % page
         with open(filename, 'wb') as f:
             f.write(response.body)
         self.log('Saved file %s' % filename)
-        #
-        #
-        #
+        
+    def postCss(self, response){
+        
+    }
