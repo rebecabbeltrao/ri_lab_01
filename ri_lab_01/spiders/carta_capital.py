@@ -29,17 +29,23 @@ class CartaCapitalSpider(scrapy.Spider):
         self.log('Saved file %s' % filename)
         
     def postCss(self, response){
-        
+        def getCss(query):
+              return response.css(query).get(default='').strip()
+        def getAllCss(query): 
+              return response.css(query).getall()   
     }
+<<<<<<< HEAD
 
     yield{
          yield {
             'title': getCss('a.eltdf-pt-link::text'),
-            'url': response.url,
             'subtitle': getCss('div.wpb_wrapper > h3::text'),
             'author': getCss('a.eltdf-post-info-author-link::text').get(),
             'date': getCss('div.eltdf-post-info-date > a::text'),
             'section': getCss('div.eltdf-post-info-category > a::text'),
             'text': getAllCss('div.eltdf-post-text-inner > a::text, div.eltdf-post-text-inner > p::text')
+            'url': response.url,
             }
     }
+=======
+>>>>>>> 93ba52d8181794ea9d9d751395ab21c9476c3251
