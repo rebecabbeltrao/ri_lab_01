@@ -9,7 +9,7 @@ from ri_lab_01.items import RiLab01CommentItem
 class CartaCapitalSpider(scrapy.Spider):
     name = 'carta_capital'
     allowed_domains = ['cartacapital.com.br']
-    start_urls = []
+    start_urls = ['https://www.cartacapital.com.br/']
 
     def __init__(self, *a, **kw):
         super(CartaCapitalSpider, self).__init__(*a, **kw)
